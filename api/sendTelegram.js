@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
   }
 
   // Send a request to Telegram API
-  const url = `https://api.telegram.org/bot<7687887969:AAHrX0dIvnTZk_ZVh29xqbcGGsKSOcg77Wk>/sendMessage?chat_id=<shipanooly>&text=${encodeURIComponent(message)}`;
+  const url = `https://api.telegram.org/bot<7687887969:AAHrX0dIvnTZk_ZVh29xqbcGGsKSOcg77Wk>/sendMessage?chat_id=<@shipanooly>&text=${encodeURIComponent(message)}`;
 
   try {
     await axios.get(url);
