@@ -1,18 +1,20 @@
 const axios = require('axios');
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   const { message } = req.query;
 
   if (!message) {
-    return res.status(400).send('Message parameter is required');
+    return res.status(400).json({ error: 'Message parameter is required' });
   }
 
-  // Send a request to Telegram API
-  const url = `https://api.telegram.org/bot7687887969:AAHrX0dIvnTZk_ZVh29xqbcGGsKSOcg77Wk/sendMessage?chat_id=@shipanooly&text=${encodeURIComponent(message)}`;
+  const botToken = '7687887969:AAHrX0dIvnTZk_ZVh29xqbcGGsKSOcg77Wk';
+  const chatId = '@shipanooly';
+  const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
   try {
-    await axios.get(url);
-    return res.status(200).send('Message sent');
+    const response = await axios.get(url);
+    return res.status(200).json(response.data);
   } catch (error) {
-    return res.status(500).send('Failed to send message');
+    return res.status(500).json({ error: 'Failed to send message', details: error.message });
   }
-};
+}
