@@ -1,14 +1,14 @@
 {
   "name": "telbot",
   "version": "1.0.0",
-  "description": "Telegram bot sender via Vercel function",
-  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.8.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node api/sendTelegram.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^1.8.4"
-  }
+  "description": ""
 }
+
